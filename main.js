@@ -35,7 +35,7 @@ function stringToHash(str) {
 const PAST_LIFE_ARCHETYPES = [
     {
         title: "푸른 숲의 수호자, 청룡(靑龍)",
-        image: "https://images.unsplash.com/photo-1577493322601-3ae1fbd27bc6?auto=format&fit=crop&q=80&w=800",
+        image: "https://images.unsplash.com/photo-1620336655055-088d06e79bf0?auto=format&fit=crop&q=80&w=800",
         past: "당신은 전생에 구름을 헤치며 동방의 푸른 숲을 다스리던 신성한 청룡이었습니다. 생명의 기운을 주관하며 대지에 봄을 불러오는 고귀한 존재였죠.",
         present: "청룡의 기운이 현생으로 이어져, 당신은 새로운 일을 시작하는 창의력과 굴하지 않는 강인한 생명력을 지닌 '인간 청룡'으로 살아가고 있습니다.",
         future: "세상에 활력을 불어넣는 지도적인 위치에 오르게 될 것입니다. 당신의 성장이 주변 사람들을 함께 일으켜 세우는 거대한 숲을 이루게 됩니다.",
@@ -45,7 +45,7 @@ const PAST_LIFE_ARCHETYPES = [
     },
     {
         title: "산맥의 제왕, 백두산 호랑이(虎)",
-        image: "https://images.unsplash.com/photo-1508817628294-5a453fa0b8fb?auto=format&fit=crop&q=80&w=800",
+        image: "https://images.unsplash.com/photo-1605333396915-47ed6b68a00e?auto=format&fit=crop&q=80&w=800",
         past: "험준한 산맥을 호령하며 산의 질서를 수호하던 영험한 호랑이었습니다. 당신의 포효는 악한 기운을 물리치고 선량한 이들을 지키는 위엄의 상징이었습니다.",
         present: "호랑이의 용맹함과 고독한 카리스마가 당신의 내면에 살아있습니다. 독립심이 강하고 정의로워, 어떤 어려움 앞에서도 당당하게 맞서는 분이시군요.",
         future: "독자적인 영역에서 정점에 올라 자신만의 왕국을 건설하게 될 것입니다. 당신의 강력한 추진력이 불가능해 보이던 목표를 현실로 바꿔놓을 운명입니다.",
@@ -55,7 +55,7 @@ const PAST_LIFE_ARCHETYPES = [
     },
     {
         title: "태양을 품은 불사조, 주작(朱雀)",
-        image: "https://images.unsplash.com/photo-1590005354167-6da97870c921?auto=format&fit=crop&q=80&w=800",
+        image: "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?auto=format&fit=crop&q=80&w=800",
         past: "타오르는 불꽃 속에서 다시 태어나 하늘을 붉게 물들이던 신비로운 주작이었습니다. 당신이 날개를 펼칠 때마다 세상은 뜨거운 열정과 희망으로 가득 찼습니다.",
         present: "주작의 뜨거운 열정이 현생의 예술적 감각과 화려한 언변으로 나타나고 있습니다. 주변을 밝히는 밝은 에너지와 사람들을 매료시키는 매력을 지닌 분입니다.",
         future: "많은 이들의 주목을 받는 화려한 무대 위에서 당신의 재능을 꽃피우게 될 것입니다. 당신의 이름이 널리 알려져 빛나는 결실을 맺게 되는 삶입니다.",
@@ -65,7 +65,7 @@ const PAST_LIFE_ARCHETYPES = [
     },
     {
         title: "광야를 달리는 붉은 천마(天馬)",
-        image: "https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?auto=format&fit=crop&q=80&w=800",
+        image: "https://images.unsplash.com/photo-1598974357801-cbca100e65d3?auto=format&fit=crop&q=80&w=800",
         past: "끝없는 평원을 번개처럼 달리며 바람을 가르던 영험한 붉은 말이었습니다. 지치지 않는 체력과 자유를 향한 갈망으로 대륙의 끝까지 흔적을 남겼죠.",
         present: "천마의 역동적인 기운이 이어져 현생에서도 활동력이 매우 뛰어납니다. 새로운 환경에 빠르게 적응하며, 목표를 향해 거침없이 돌진하는 에너지를 가졌습니다.",
         future: "전 세계를 무대로 활동하며 거침없이 영역을 확장하게 될 것입니다. 당신의 발걸음이 닿는 곳마다 새로운 길이 열리고 변화가 일어나는 역동적인 미래가 기다립니다.",
@@ -75,7 +75,7 @@ const PAST_LIFE_ARCHETYPES = [
     },
     {
         title: "대지의 성수, 황룡(黃龍)",
-        image: "https://images.unsplash.com/photo-1618336753974-aae8e04506aa?auto=format&fit=crop&q=80&w=800",
+        image: "https://images.unsplash.com/photo-1620336655052-b5c986c5c518?auto=format&fit=crop&q=80&w=800",
         past: "천하의 중심에서 오행의 조화를 다스리던 신성한 황룡이었습니다. 모든 생명이 뿌리를 내릴 수 있도록 대지를 비옥하게 가꾸고 질서를 유지하던 중재자였죠.",
         present: "황룡의 포용력과 안정감이 당신의 성품에 녹아 있습니다. 신뢰감이 깊고 중심이 단단하여, 주변 사람들이 의지하고 따르는 듬직한 지도자 역할을 수행하고 계시군요.",
         future: "거대한 자산이나 조직의 중심을 잡는 핵심적인 인물이 될 것입니다. 당신의 중재와 결단이 많은 이들에게 평안과 풍요를 가져다주는 큰 결실을 맺게 됩니다.",
@@ -85,7 +85,7 @@ const PAST_LIFE_ARCHETYPES = [
     },
     {
         title: "풍요를 부르는 황금 소(牛)",
-        image: "https://images.unsplash.com/photo-1545468241-e945e454470d?auto=format&fit=crop&q=80&w=800",
+        image: "https://images.unsplash.com/photo-1623150502742-6a849aa94be4?auto=format&fit=crop&q=80&w=800",
         past: "묵묵히 대지를 일구며 만인에게 풍요를 선사하던 영험한 황금 소였습니다. 당신의 성실한 발걸음이 닿는 곳마다 황금빛 곡식이 자라나던 축복의 상징이었죠.",
         present: "황금 소의 우직함과 풍요로운 기운이 당신의 삶에 깃들어 있습니다. 인내심이 강하고 실속이 있어, 차근차근 부와 명예를 쌓아 올리는 견실한 분입니다.",
         future: "시간이 흐를수록 가치가 높아지는 거대한 성취를 이루게 될 것입니다. 노년으로 갈수록 더욱 풍요롭고 평안한 삶을 누리는 '만석꾼'의 운명을 타고났습니다.",
@@ -95,7 +95,7 @@ const PAST_LIFE_ARCHETYPES = [
     },
     {
         title: "설원의 지배자, 백호(白虎)",
-        image: "https://images.unsplash.com/photo-1551009175-15bdf9dcb580?auto=format&fit=crop&q=80&w=800",
+        image: "https://images.unsplash.com/photo-1615485244981-aa0773d32832?auto=format&fit=crop&q=80&w=800",
         past: "서리가 내린 차가운 숲을 수호하며 악귀를 쫓아내던 신비로운 백호였습니다. 당신의 날카로운 직관과 용맹함은 세상의 부정을 정화하는 빛과 같았습니다.",
         present: "백호의 냉철한 판단력과 예리한 감각이 현생에서도 빛을 발하고 있습니다. 옳고 그름이 분명하며, 위기 상황에서 더욱 빛나는 담력을 지닌 분이시군요.",
         future: "정의를 수호하거나 전문적인 분야에서 최고의 권위를 갖게 될 것입니다. 당신의 공정한 판단이 사회의 기준이 되고 많은 이들에게 존경받는 지도자가 됩니다.",
@@ -105,7 +105,7 @@ const PAST_LIFE_ARCHETYPES = [
     },
     {
         title: "달빛을 품은 은빛 늑대(狼)",
-        image: "https://images.unsplash.com/photo-1551009175-15bdf9dcb580?auto=format&fit=crop&q=80&w=800",
+        image: "https://images.unsplash.com/photo-1591824438708-22045ad63b75?auto=format&fit=crop&q=80&w=800",
         past: "은은한 달빛 아래 무리를 이끌며 지혜를 나누던 영특한 늑대였습니다. 강한 결속력과 날카로운 생존 본능으로 험난한 환경 속에서도 무리의 번영을 지켜냈죠.",
         present: "은빛 늑대의 지혜와 의리가 당신의 인간관계 속에 살아있습니다. 독립적이면서도 소중한 사람들에게는 한없이 헌신적이며, 직관적으로 핵심을 꿰뚫어 봅니다.",
         future: "자신만의 독자적인 커뮤니티나 팀을 성공적으로 이끌어 거대한 네트워크를 형성하게 될 것입니다. 당신의 의리가 자산이 되어 큰 성공을 거두는 미래가 보입니다.",
