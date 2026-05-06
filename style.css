@@ -120,13 +120,13 @@ input:focus, select:focus {
     background: rgba(255, 255, 255, 0.1);
 }
 
-.gender-options {
+.gender-options, .calendar-options {
     display: flex;
     gap: 1.5rem;
     padding: 0.5rem 0;
 }
 
-.gender-options label {
+.gender-options label, .calendar-options label {
     display: inline;
     color: var(--text-primary);
     cursor: pointer;

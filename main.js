@@ -69,10 +69,11 @@ document.addEventListener('DOMContentLoaded', () => {
         
         const name = document.getElementById('name').value;
         const birthDate = document.getElementById('birth-date').value;
+        const calendar = document.querySelector('input[name="calendar"]:checked').value;
         const birthTime = document.getElementById('birth-time').value;
         const gender = document.querySelector('input[name="gender"]:checked').value;
 
-        startAnalysis(name, birthDate, birthTime, gender);
+        startAnalysis(name, birthDate, calendar, birthTime, gender);
     });
 
     retryBtn.addEventListener('click', () => {
@@ -80,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
         inputSection.classList.add('active');
     });
 
-    function startAnalysis(name, date, time, gender) {
+    function startAnalysis(name, date, calendar, time, gender) {
         inputSection.classList.remove('active');
         loadingSection.classList.add('active');
 
@@ -91,14 +92,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 loadingText.innerText = loadingMessages[msgIndex];
             } else {
                 clearInterval(msgInterval);
-                showResult(name, date, time, gender);
+                showResult(name, date, calendar, time, gender);
             }
         }, 800);
     }
 
-    function showResult(name, date, time, gender) {
+    function showResult(name, date, calendar, time, gender) {
         // 1. 간이 사주 계산
-        const saju = calculateSaju(date, time);
+        const saju = calculateSaju(date, calendar, time);
         
         // 2. 결과 렌더링
         document.getElementById('yeon-pillar').innerText = saju.yeon;
@@ -116,16 +117,21 @@ document.addEventListener('DOMContentLoaded', () => {
         resultSection.classList.add('active');
     }
 
-    function calculateSaju(date, time) {
+    function calculateSaju(date, calendar, time) {
         // 날짜 데이터를 기반으로 결정론적 해시 생성
         const d = new Date(date);
-        const seed = d.getFullYear() + d.getMonth() + d.getDate() + (time === 'unknown' ? 7 : parseInt(time));
+        let seed = d.getFullYear() + d.getMonth() + d.getDate() + (time === 'unknown' ? 7 : parseInt(time));
         
+        // 음력일 경우 시드값 조정 (간이 로직)
+        if (calendar === 'lunar') {
+            seed += 100; 
+        }
+
         const getGanJi = (s) => GAN[s % 10] + JI[s % 12];
 
         return {
             yeon: getGanJi(d.getFullYear() + 5), // 대략적인 연도 매핑
-            wol: getGanJi(d.getFullYear() + d.getMonth() + 2),
+            wol: getGanJi(d.getFullYear() + d.getMonth() + (calendar === 'lunar' ? 5 : 2)),
             il: getGanJi(seed),
             si: time === 'unknown' ? "??" : getGanJi(seed + parseInt(time) + 9)
         };
