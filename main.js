@@ -164,10 +164,10 @@ document.addEventListener('DOMContentLoaded', () => {
     initDateDropdowns();
 
     const loadingMessages = [
-        "천문의 기운을 읽는 중...",
-        "사주팔자의 실타래를 푸는 중...",
-        "전생의 기억을 소환하고 있습니다...",
-        "운명의 지도를 그리는 중..."
+        "영혼의 데이터베이스에 접속 중...",
+        "과거 로그 파일을 스캔하고 있습니다...",
+        "운명의 소스코드를 디코딩 중...",
+        "아키타입 매핑 시스템 가동..."
     ];
 
     sajuForm.addEventListener('submit', (e) => {
