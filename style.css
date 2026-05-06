@@ -395,6 +395,51 @@ footer {
     transform: scale(1.1);
 }
 
+.contact-area {
+    display: block;
+    margin-top: 4rem;
+    padding-bottom: 2rem;
+}
+
+.small-card {
+    padding: 1.5rem !important;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.small-card .gold-text {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.small-card .description {
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+}
+
+.input-group-row {
+    display: flex;
+    gap: 0.8rem;
+}
+
+.input-group-row .input-group {
+    flex: 1;
+}
+
+.small-card label {
+    font-size: 0.8rem;
+}
+
+.small-card input, .small-card textarea {
+    padding: 0.6rem;
+    font-size: 0.9rem;
+}
+
+.btn-small {
+    padding: 0.7rem !important;
+    font-size: 0.95rem !important;
+}
+
 /* Responsive */
 @media (max-width: 480px) {
     .main-title { font-size: 2.2rem; }
