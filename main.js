@@ -120,6 +120,24 @@ const PAST_LIFE_ARCHETYPES = [
 
 // 3. UI 컨트롤러
 document.addEventListener('DOMContentLoaded', () => {
+    // 테마 설정
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    const body = document.body;
+
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'light') {
+        body.classList.add('light-mode');
+        themeIcon.innerText = '☀️';
+    }
+
+    themeToggle.addEventListener('click', () => {
+        body.classList.toggle('light-mode');
+        const isLight = body.classList.contains('light-mode');
+        themeIcon.innerText = isLight ? '☀️' : '🌙';
+        localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    });
+
     const sajuForm = document.getElementById('saju-form');
     const inputSection = document.getElementById('input-section');
     const loadingSection = document.getElementById('loading-section');
