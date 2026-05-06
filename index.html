@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>명리전생 - 당신의 전생을 찾아서</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="stars-container"></div>
+    
+    <div class="container">
+        <header>
+            <h1 class="main-title">命理前生</h1>
+            <p class="sub-title">명리학으로 풀어보는 당신의 전생 이야기</p>
+        </header>
+
+        <main id="app">
+            <!-- 입력 섹션 -->
+            <section id="input-section" class="active">
+                <div class="input-card">
+                    <p class="description">당신이 태어난 때의 기운을 통해<br>잊혀진 기억의 실타래를 풀어봅니다.</p>
+                    
+                    <form id="saju-form">
+                        <div class="input-group">
+                            <label for="name">성함</label>
+                            <input type="text" id="name" placeholder="이름을 입력하세요" required>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="birth-date">생년월일</label>
+                            <input type="date" id="birth-date" required>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="birth-time">태어난 시간</label>
+                            <select id="birth-time">
+                                <option value="unknown">모름</option>
+                                <option value="0">자시 (23:30 ~ 01:29)</option>
+                                <option value="1">축시 (01:30 ~ 03:29)</option>
+                                <option value="2">인시 (03:30 ~ 05:29)</option>
+                                <option value="3">묘시 (05:30 ~ 07:29)</option>
+                                <option value="4">진시 (07:30 ~ 09:29)</option>
+                                <option value="5">사시 (09:30 ~ 11:29)</option>
+                                <option value="6">오시 (11:30 ~ 13:29)</option>
+                                <option value="7">미시 (13:30 ~ 15:29)</option>
+                                <option value="8">신시 (15:30 ~ 17:29)</option>
+                                <option value="9">유시 (17:30 ~ 19:29)</option>
+                                <option value="10">술시 (19:30 ~ 21:29)</option>
+                                <option value="11">해시 (21:30 ~ 23:29)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label>성별</label>
+                            <div class="gender-options">
+                                <input type="radio" name="gender" value="male" id="male" checked>
+                                <label for="male">남성</label>
+                                <input type="radio" name="gender" value="female" id="female">
+                                <label for="female">여성</label>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn-submit">전생 확인하기</button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- 로딩 섹션 -->
+            <section id="loading-section">
+                <div class="loader-content">
+                    <div class="loader-circle"></div>
+                    <p id="loading-text">천문의 기운을 읽는 중...</p>
+                </div>
+            </section>
+
+            <!-- 결과 섹션 -->
+            <section id="result-section">
+                <div class="result-card">
+                    <div class="saju-display">
+                        <div class="pillar">
+                            <span class="label">시주</span>
+                            <span class="hanja" id="si-pillar">--</span>
+                        </div>
+                        <div class="pillar">
+                            <span class="label">일주</span>
+                            <span class="hanja" id="il-pillar">--</span>
+                        </div>
+                        <div class="pillar">
+                            <span class="label">월주</span>
+                            <span class="hanja" id="wol-pillar">--</span>
+                        </div>
+                        <div class="pillar">
+                            <span class="label">연주</span>
+                            <span class="hanja" id="yeon-pillar">--</span>
+                        </div>
+                    </div>
+
+                    <h2 id="past-life-title" class="gold-text">전생 타이틀</h2>
+                    <div class="divider"></div>
+                    <div id="past-life-story" class="story-content">
+                        <!-- 전생 이야기가 여기에 들어갑니다 -->
+                    </div>
+
+                    <div class="advice-box">
+                        <h3>현생을 위한 조언</h3>
+                        <p id="present-advice"></p>
+                    </div>
+
+                    <button id="retry-btn" class="btn-retry">다시 확인하기</button>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 명리전생. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
