@@ -234,10 +234,32 @@ input:focus, select:focus {
     margin: 0 auto 2rem;
 }
 
+.analysis-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+}
+
+.analysis-item {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.analysis-label {
+    color: var(--gold);
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
 .story-content {
     line-height: 1.8;
     color: var(--text-primary);
-    margin-bottom: 2.5rem;
     white-space: pre-wrap;
 }
 
