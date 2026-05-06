@@ -97,6 +97,52 @@ document.addEventListener('DOMContentLoaded', () => {
     const retryBtn = document.getElementById('retry-btn');
     const loadingText = document.getElementById('loading-text');
 
+    // 생년월일 드롭다운 초기화
+    const yearSelect = document.getElementById('birth-year');
+    const monthSelect = document.getElementById('birth-month');
+    const daySelect = document.getElementById('birth-day');
+
+    const initDateDropdowns = () => {
+        const currentYear = new Date().getFullYear();
+        // 연도 (1900 ~ 현재)
+        for (let y = currentYear; y >= 1900; y--) {
+            const opt = document.createElement('option');
+            opt.value = y;
+            opt.textContent = `${y}년`;
+            yearSelect.appendChild(opt);
+        }
+        // 월
+        for (let m = 1; m <= 12; m++) {
+            const opt = document.createElement('option');
+            opt.value = m;
+            opt.textContent = `${m}월`;
+            monthSelect.appendChild(opt);
+        }
+        // 일 초기화 (기본 31일)
+        updateDays();
+    };
+
+    const updateDays = () => {
+        const year = parseInt(yearSelect.value);
+        const month = parseInt(monthSelect.value);
+        const daysInMonth = new Date(year, month, 0).getDate();
+        
+        const currentDay = daySelect.value;
+        daySelect.innerHTML = '';
+        for (let d = 1; d <= daysInMonth; d++) {
+            const opt = document.createElement('option');
+            opt.value = d;
+            opt.textContent = `${d}일`;
+            if (d == currentDay) opt.selected = true;
+            daySelect.appendChild(opt);
+        }
+    };
+
+    yearSelect.addEventListener('change', updateDays);
+    monthSelect.addEventListener('change', updateDays);
+    
+    initDateDropdowns();
+
     const loadingMessages = [
         "천문의 기운을 읽는 중...",
         "사주팔자의 실타래를 푸는 중...",
@@ -108,7 +154,11 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         
         const name = document.getElementById('name').value;
-        const birthDate = document.getElementById('birth-date').value;
+        const year = yearSelect.value;
+        const month = monthSelect.value.padStart(2, '0');
+        const day = daySelect.value.padStart(2, '0');
+        const birthDate = `${year}-${month}-${day}`;
+        
         const calendar = document.querySelector('input[name="calendar"]:checked').value;
         const birthTime = document.getElementById('birth-time').value;
         const gender = document.querySelector('input[name="gender"]:checked').value;

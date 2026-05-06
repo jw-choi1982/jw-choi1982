@@ -29,8 +29,12 @@
                         </div>
                         
                         <div class="input-group">
-                            <label for="birth-date">생년월일</label>
-                            <input type="date" id="birth-date" required>
+                            <label>생년월일</label>
+                            <div class="birth-date-group">
+                                <select id="birth-year" required></select>
+                                <select id="birth-month" required></select>
+                                <select id="birth-day" required></select>
+                            </div>
                             <div class="calendar-options">
                                 <input type="radio" name="calendar" value="solar" id="solar" checked>
                                 <label for="solar">양력</label>
