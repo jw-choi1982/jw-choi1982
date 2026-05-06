@@ -148,7 +148,7 @@ section.active {
     font-weight: 700;
 }
 
-input[type="text"], select {
+input[type="text"], input[type="email"], select, textarea {
     width: 100%;
     padding: 0.8rem;
     background: var(--input-bg);
@@ -159,15 +159,14 @@ input[type="text"], select {
     transition: background-color 0.3s, border-color 0.3s, color 0.3s;
 }
 
-select option {
-    background-color: var(--bg-color);
-    color: var(--text-primary);
-}
-
-input:focus, select:focus {
+input:focus, select:focus, textarea:focus {
     outline: none;
     border-color: var(--gold);
     background: var(--input-bg);
+}
+
+textarea {
+    resize: none;
 }
 
 .birth-date-group {

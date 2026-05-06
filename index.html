@@ -145,6 +145,29 @@
                     <button id="retry-btn" class="btn-retry">다시 확인하기</button>
                 </div>
             </section>
+            <!-- 제휴 문의 섹션 -->
+            <section id="contact-section" style="display: block; margin-top: 5rem;">
+                <div class="input-card">
+                    <h3 class="gold-text" style="font-size: 1.5rem; margin-bottom: 1rem;">🤝 제휴 및 비즈니스 문의</h3>
+                    <p class="description" style="margin-bottom: 1.5rem;">전생코딩과 함께 새로운 가치를 만들고 싶으신가요?<br>문의를 남겨주시면 소중히 검토 후 연락드리겠습니다.</p>
+                    
+                    <form action="https://formspree.io/f/xoqgjojz" method="POST" id="contact-form">
+                        <div class="input-group">
+                            <label for="contact-name">성함 / 업체명</label>
+                            <input type="text" name="name" id="contact-name" placeholder="문의하시는 분의 성함을 입력하세요" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="contact-email">이메일 주소</label>
+                            <input type="email" name="email" id="contact-email" placeholder="답변받으실 이메일을 입력하세요" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="contact-message">문의 내용</label>
+                            <textarea name="message" id="contact-message" rows="4" placeholder="제휴 제안이나 궁금하신 내용을 적어주세요" required></textarea>
+                        </div>
+                        <button type="submit" class="btn-submit">문의 보내기</button>
+                    </form>
+                </div>
+            </section>
         </main>
 
         <footer>
