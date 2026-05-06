@@ -114,6 +114,11 @@ input[type="text"], input[type="date"], select {
     font-family: inherit;
 }
 
+select option {
+    background-color: #1a1a1c;
+    color: white;
+}
+
 input:focus, select:focus {
     outline: none;
     border-color: var(--gold);
