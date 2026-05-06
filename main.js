@@ -14,6 +14,23 @@ const ELEMENT_MAP = {
     "壬": "수", "癸": "수", "子": "수", "亥": "수"
 };
 
+const MODIFIERS = [
+    "고독한", "빛을 머금은", "폭풍을 부르는", "대지를 수호하는", "전설적인", 
+    "신비로운", "지혜로운", "새벽의", "달빛 아래의", "태양을 등진", 
+    "끝없는 길의", "바람을 가르는", "정의로운", "냉철한", "자애로운", 
+    "변화무쌍한", "천년을 기다린", "어둠을 밝히는", "조화를 이루는", "진리를 찾는"
+];
+
+function stringToHash(str) {
+    let hash = 0;
+    for (let i = 0; i < str.length; i++) {
+        const char = str.charCodeAt(i);
+        hash = ((hash << 5) - hash) + char;
+        hash |= 0;
+    }
+    return Math.abs(hash);
+}
+
 // 2. 전생 데이터베이스
 const PAST_LIFE_ARCHETYPES = [
     {
@@ -245,14 +262,18 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('il-pillar').innerText = saju.il;
         document.getElementById('si-pillar').innerText = saju.si;
 
-        // 3. 전생 매핑
-        const pastLife = getPastLife(saju);
-        document.getElementById('past-life-title').innerText = `${name}님, 당신의 운명 분석`;
+        // 3. 전생 매핑 (전체 입력을 해시하여 다양성 확보)
+        const inputData = `${name}-${date}-${calendar}-${time}-${gender}`;
+        const pastLife = getPastLife(saju, inputData);
         
         // 이미지 업데이트
         const animalImg = document.getElementById('animal-img');
         animalImg.src = pastLife.image;
-        animalImg.alt = pastLife.title;
+        animalImg.alt = pastLife.combinedTitle;
+
+        // 타이틀에 수식어 추가
+        const titleElement = document.getElementById('past-life-title');
+        titleElement.innerHTML = `${name}님은 <br><span class="gold-text">[${pastLife.combinedTitle}]</span> <br>이었습니다.`;
 
         document.getElementById('past-life-story').innerText = pastLife.past;
         document.getElementById('present-life-story').innerText = pastLife.present;
@@ -283,20 +304,30 @@ document.addEventListener('DOMContentLoaded', () => {
         };
     }
 
-    function getPastLife(saju) {
-        // 일주(일간)의 오행을 추출
+    function getPastLife(saju, inputData) {
+        const hash = stringToHash(inputData);
+        
+        // 1. 일주(일간)의 오행을 추출
         const ilgan = saju.il[0];
         const element = ELEMENT_MAP[ilgan] || "토";
         
-        // 해당 오행을 가진 후보군 추출
+        // 2. 해당 오행을 가진 후보군 추출
         const candidates = PAST_LIFE_ARCHETYPES.filter(a => a.dominantElement === element);
         
-        if (candidates.length === 0) return PAST_LIFE_ARCHETYPES[2];
+        // 3. 해시를 사용하여 후보군 중 하나 선택
+        const archetypeIndex = hash % candidates.length;
+        const baseArchetype = candidates[archetypeIndex] || PAST_LIFE_ARCHETYPES[2];
 
-        // 지지(JI)의 인덱스를 활용하여 인간(0) 또는 동물(1) 선택 (결정론적)
-        const jiIndex = JI.indexOf(saju.il[1]);
-        const selectionIndex = jiIndex % candidates.length;
+        // 4. 해시를 사용하여 수식어 선택
+        const modifierIndex = (hash >> 2) % MODIFIERS.length;
+        const modifier = MODIFIERS[modifierIndex];
+
+        // 5. 수식어와 기본 타이틀 결합
+        const combinedTitle = `${modifier} ${baseArchetype.title}`;
         
-        return candidates[selectionIndex];
+        return {
+            ...baseArchetype,
+            combinedTitle: combinedTitle
+        };
     }
 });
