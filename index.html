@@ -3,180 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>전생코딩 - 당신의 운명을 디코딩하다</title>
+    <title>AI 인테리어 변환 서비스</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="stars-container"></div>
-    <div id="theme-toggle" class="theme-toggle" title="테마 변경">
-        <span id="theme-icon">🌙</span>
-    </div>
-    
     <div class="container">
         <header>
-            <h1 class="main-title">전생<span class="coding-text">코딩</span></h1>
-            <p class="sub-title">당신의 잊혀진 소스코드를 분석합니다</p>
+            <h1>AI 인테리어 변환</h1>
+            <p>당신의 공간을 AI와 함께 새롭게 디자인해보세요.</p>
         </header>
 
-        <main id="app">
+        <main>
             <!-- 입력 섹션 -->
             <section id="input-section" class="active">
-                <div class="input-card">
-                    <p class="description">당신이 태어난 때의 기운을 통해<br>잊혀진 기억의 실타래를 풀어봅니다.</p>
-                    
-                    <form id="saju-form">
-                        <div class="input-group">
-                            <label for="name">성함</label>
-                            <input type="text" id="name" placeholder="이름을 입력하세요" required>
+                <div class="card">
+                    <div class="upload-area" id="drop-zone">
+                        <input type="file" id="image-upload" accept="image/*" hidden>
+                        <div class="upload-placeholder" id="upload-placeholder">
+                            <span class="icon">📸</span>
+                            <p>사진을 클릭하거나 드래그하여 업로드하세요</p>
                         </div>
-                        
-                        <div class="input-group">
-                            <label>생년월일</label>
-                            <div class="birth-date-group">
-                                <select id="birth-year" required></select>
-                                <select id="birth-month" required></select>
-                                <select id="birth-day" required></select>
-                            </div>
-                            <div class="calendar-options">
-                                <input type="radio" name="calendar" value="solar" id="solar" checked>
-                                <label for="solar">양력</label>
-                                <input type="radio" name="calendar" value="lunar" id="lunar">
-                                <label for="lunar">음력</label>
-                            </div>
-                        </div>
-                        
-                        <div class="input-group">
-                            <label for="birth-time">태어난 시간</label>
-                            <select id="birth-time">
-                                <option value="unknown">모름</option>
-                                <option value="0">자시 (23:30 ~ 01:29)</option>
-                                <option value="1">축시 (01:30 ~ 03:29)</option>
-                                <option value="2">인시 (03:30 ~ 05:29)</option>
-                                <option value="3">묘시 (05:30 ~ 07:29)</option>
-                                <option value="4">진시 (07:30 ~ 09:29)</option>
-                                <option value="5">사시 (09:30 ~ 11:29)</option>
-                                <option value="6">오시 (11:30 ~ 13:29)</option>
-                                <option value="7">미시 (13:30 ~ 15:29)</option>
-                                <option value="8">신시 (15:30 ~ 17:29)</option>
-                                <option value="9">유시 (17:30 ~ 19:29)</option>
-                                <option value="10">술시 (19:30 ~ 21:29)</option>
-                                <option value="11">해시 (21:30 ~ 23:29)</option>
-                            </select>
-                        </div>
-                        
-                        <div class="input-group">
-                            <label>성별</label>
-                            <div class="gender-options">
-                                <input type="radio" name="gender" value="male" id="male" checked>
-                                <label for="male">남성</label>
-                                <input type="radio" name="gender" value="female" id="female">
-                                <label for="female">여성</label>
-                            </div>
-                        </div>
+                        <img id="preview-image" src="" alt="미리보기" class="hidden">
+                    </div>
 
-                        <button type="submit" class="btn-submit">전생 확인하기</button>
-                    </form>
+                    <div class="control-group">
+                        <label for="style-select">인테리어 스타일</label>
+                        <select id="style-select">
+                            <option value="modern">모던 (Modern)</option>
+                            <option value="wood">우드톤 (Wood Tone)</option>
+                            <option value="minimalist">미니멀리스트 (Minimalist)</option>
+                            <option value="industrial">인더스트리얼 (Industrial)</option>
+                            <option value="scandinavian">스칸디나비아 (Scandinavian)</option>
+                        </select>
+                    </div>
+
+                    <button id="transform-btn" class="btn-primary" disabled>변환하기</button>
                 </div>
             </section>
 
             <!-- 로딩 섹션 -->
-            <section id="loading-section">
-                <div class="loader-content">
-                    <div class="loader-circle"></div>
-                    <p id="loading-text">천문의 기운을 읽는 중...</p>
+            <section id="loading-section" class="hidden">
+                <div class="loader-container">
+                    <div class="spinner"></div>
+                    <p>AI가 인테리어를 변환 중입니다...</p>
+                    <p class="sub-text">잠시만 기다려 주세요.</p>
                 </div>
             </section>
 
             <!-- 결과 섹션 -->
-            <section id="result-section">
+            <section id="result-section" class="hidden">
                 <div class="result-card">
-                    <div class="saju-display">
-                        <div class="pillar">
-                            <span class="label">시주</span>
-                            <span class="hanja" id="si-pillar">--</span>
-                        </div>
-                        <div class="pillar">
-                            <span class="label">일주</span>
-                            <span class="hanja" id="il-pillar">--</span>
-                        </div>
-                        <div class="pillar">
-                            <span class="label">월주</span>
-                            <span class="hanja" id="wol-pillar">--</span>
-                        </div>
-                        <div class="pillar">
-                            <span class="label">연주</span>
-                            <span class="hanja" id="yeon-pillar">--</span>
-                        </div>
+                    <h2>변환 결과</h2>
+                    <div class="result-image-container">
+                        <img id="result-image" src="" alt="변환된 결과 이미지">
                     </div>
-
-                    <h2 id="past-life-title" class="gold-text">전생 타이틀</h2>
-                    
-                    <div class="animal-illustration">
-                        <div class="image-frame">
-                            <img id="animal-img" src="" alt="동물 일러스트">
-                        </div>
+                    <div class="btn-group">
+                        <button id="download-btn" class="btn-secondary">이미지 저장</button>
+                        <button id="retry-btn" class="btn-outline">다시 하기</button>
                     </div>
-
-                    <div class="divider"></div>
-                    
-                    <div class="analysis-container">
-                        <div class="analysis-item">
-                            <h3 class="analysis-label"><span class="icon">📜</span> 전생 (Past)</h3>
-                            <div id="past-life-story" class="story-content"></div>
-                        </div>
-                        
-                        <div class="analysis-item">
-                            <h3 class="analysis-label"><span class="icon">🌓</span> 현생 (Present)</h3>
-                            <div id="present-life-story" class="story-content"></div>
-                        </div>
-                        
-                        <div class="analysis-item">
-                            <h3 class="analysis-label"><span class="icon">✨</span> 미래 (Future)</h3>
-                            <div id="future-path-story" class="story-content"></div>
-                        </div>
-                    </div>
-
-                    <div class="advice-box">
-                        <h3>운명의 조언</h3>
-                        <p id="present-advice"></p>
-                    </div>
-
-                    <button id="retry-btn" class="btn-retry">다시 확인하기</button>
-                </div>
-            </section>
-            <!-- 제휴 문의 섹션 -->
-            <section id="contact-section" class="contact-area">
-                <div class="input-card small-card">
-                    <h3 class="gold-text">🤝 제휴 및 비즈니스 문의</h3>
-                    <p class="description">전생코딩과 함께 새로운 가치를 만들고 싶으신가요?<br>문의를 남겨주시면 검토 후 연락드리겠습니다.</p>
-                    
-                    <form action="https://formspree.io/f/xbdwywqv" method="POST" id="contact-form">
-                        <div class="input-group-row">
-                            <div class="input-group">
-                                <label for="contact-name">성함 / 업체명</label>
-                                <input type="text" name="name" id="contact-name" placeholder="성함" required>
-                            </div>
-                            <div class="input-group">
-                                <label for="contact-email">이메일</label>
-                                <input type="email" name="email" id="contact-email" placeholder="이메일" required>
-                            </div>
-                        </div>
-                        <div class="input-group">
-                            <label for="contact-message">문의 내용</label>
-                            <textarea name="message" id="contact-message" rows="2" placeholder="내용을 입력하세요" required></textarea>
-                        </div>
-                        <button type="submit" class="btn-submit btn-small">문의 보내기</button>
-                    </form>
                 </div>
             </section>
         </main>
 
         <footer>
-            <p>&copy; 2026 전생코딩. Your Fate, Decoded.</p>
+            <p>&copy; 2026 AI Interior Designer. All rights reserved.</p>
         </footer>
     </div>
-
     <script src="main.js"></script>
 </body>
 </html>
