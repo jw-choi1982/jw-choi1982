@@ -78,9 +78,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
+                // ▼ 바로 이 부분이 지워져 있었습니다! 서버와 이름도 완벽히 맞췄습니다.
                 body: JSON.stringify({
-                    image: base64Image,
-                    style: selectedStyle
+                    imageUrl: base64Image, 
+                    prompt: selectedStyle
                 })
             });
 
@@ -111,12 +112,12 @@ document.addEventListener('DOMContentLoaded', () => {
         resultSection.classList.add('hidden');
         inputSection.classList.remove('hidden');
         
-        // 초기화 (원할 경우)
-        // base64Image = null;
-        // previewImage.classList.add('hidden');
-        // uploadPlaceholder.classList.remove('hidden');
-        // transformBtn.disabled = true;
-        // imageUpload.value = '';
+        // 업로드 창 초기화
+        base64Image = null;
+        previewImage.classList.add('hidden');
+        uploadPlaceholder.classList.remove('hidden');
+        transformBtn.disabled = true;
+        imageUpload.value = '';
     });
 
     // 다운로드 버튼
