@@ -25,7 +25,7 @@ exports.generateInteriorV2 = onRequest({ cors: true }, async (req, res) => {
         input: {
           image: req.body.imageUrl, // 유저가 웹에서 올린 사진 URL
           prompt: req.body.prompt || "a beautiful modern living room, bright light, minimalist furniture", // 원하는 스타일
-          num_samples: 1,
+          num_samples: "1",
         },
       }
     );

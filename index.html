@@ -18,10 +18,13 @@
             <!-- 입력 섹션 -->
             <section id="input-section" class="active">
                 <div class="card">
-                    <div class="upload-area" id="drop-zone">
+                    <div class="drop-zone" id="drop-zone">
                         <input type="file" id="image-upload" accept="image/*" hidden>
                         <div class="upload-placeholder" id="upload-placeholder">
-                            <span class="icon">📸</span>
+                            <svg class="camera-icon" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+                                <circle cx="12" cy="13" r="4"></circle>
+                            </svg>
                             <p>사진을 클릭하거나 드래그하여 업로드하세요</p>
                         </div>
                         <img id="preview-image" src="" alt="미리보기" class="hidden">
@@ -43,12 +46,16 @@
             </section>
 
             <!-- 로딩 섹션 -->
-            <section id="loading-section" class="hidden">
-                <div class="loader-container">
-                    <div class="spinner"></div>
-                    <p>AI가 인테리어를 변환 중입니다...</p>
-                    <p class="sub-text">잠시만 기다려 주세요.</p>
-                </div>
+            <div id="loading-section" class="loading-section hidden">
+                <div class="spinner"></div>
+                <p class="loading-text">
+                    AI가 공간을 분석하고 멋진 인테리어를 디자인하고 있습니다...<br>
+                    <span style="font-size: 13px; color: var(--text-muted);">(약 10~20초 정도 소요됩니다)</span>
+                </p>
+            </div>
+            
+                    
+            
             </section>
 
             <!-- 결과 섹션 -->

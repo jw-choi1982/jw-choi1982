@@ -1,251 +1,234 @@
+/* style.css - Modern Dark Theme (모바일 반응형 & 핏 완벽 최적화) */
+
 :root {
-    --primary-color: #0f172a;
-    --accent-color: #3b82f6;
-    --bg-color: #f1f5f9;
-    --card-bg: #ffffff;
-    --text-primary: #1e293b;
-    --text-secondary: #64748b;
-    --border-color: #e2e8f0;
-    --success-color: #10b981;
+    --bg-color: #121212;
+    --surface-color: #1e1e1e;
+    --primary-color: #6c5ce7;
+    --primary-hover: #5849c4;
+    --text-main: #f5f6fa;
+    --text-muted: #a4b0be;
+    --border-color: #2f3542;
+    --border-radius: 12px;
 }
 
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 
 body {
-    font-family: 'Pretendard', sans-serif;
     background-color: var(--bg-color);
-    color: var(--text-primary);
-    line-height: 1.6;
-    padding: 40px 20px;
+    color: var(--text-main);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
 }
 
 .container {
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-header {
+    background-color: var(--surface-color);
+    padding: 40px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    max-width: 600px; /* PC에서는 최대 넓이 제한 */
     text-align: center;
-    margin-bottom: 40px;
 }
 
-header h1 {
-    font-size: 2.5rem;
+h1 {
+    font-size: 24px;
     font-weight: 700;
-    color: var(--primary-color);
     margin-bottom: 8px;
 }
 
-header p {
-    color: var(--text-secondary);
-    font-size: 1.1rem;
+p {
+    color: var(--text-muted);
+    font-size: 14px;
+    margin-bottom: 30px;
 }
 
-.card, .result-card {
-    background: var(--card-bg);
-    border-radius: 20px;
-    padding: 30px;
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
-}
-
-/* Upload Area */
-.upload-area {
-    width: 100%;
-    aspect-ratio: 16 / 9;
+/* 드롭존 (사진 업로드 영역) - 핏 완벽 수정 */
+.drop-zone {
     border: 2px dashed var(--border-color);
-    border-radius: 12px;
+    border-radius: var(--border-radius);
+    padding: 12px; /* ★ 쓸데없는 겉 여백을 확 줄여서 사진과 테두리 사이 틈을 없앰 */
+    min-height: 260px; /* 드래그하기 편한 최소 높이 보장 */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    overflow: hidden;
-    position: relative;
     transition: all 0.3s ease;
-    background: #f8fafc;
     margin-bottom: 24px;
+    background-color: rgba(255, 255, 255, 0.02);
 }
 
-.upload-area:hover, .upload-area.dragover {
-    border-color: var(--accent-color);
-    background: #eff6ff;
+.drop-zone:hover, .drop-zone.drag-over {
+    border-color: var(--primary-color);
+    background-color: rgba(108, 92, 231, 0.05);
 }
 
 .upload-placeholder {
-    text-align: center;
-    pointer-events: none;
+    color: var(--text-muted);
+    font-size: 14px;
+    padding: 40px 0; /* 사진이 없을 때만 빈 공간을 벌려줌 */
 }
 
-.upload-placeholder .icon {
-    font-size: 3rem;
-    margin-bottom: 12px;
-    display: block;
+/* 사진이 찌그러지지 않고 테두리에 꽉 차게 들어감 */
+.preview-image {
+    width: 100%; /* 좌우 빈 공간 없이 꽉 차게 */
+    max-height: 350px;
+    border-radius: 6px; /* 겉 테두리와 곡률 밸런스 맞춤 */
+    object-fit: cover; /* 가로세로 비율 유지하면서 깔끔하게 채움 */
 }
 
-.upload-placeholder p {
-    color: var(--text-secondary);
-    font-weight: 500;
-}
-
-#preview-image {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-
-/* Controls */
-.control-group {
+/* 스타일 선택 드롭다운 */
+.style-select-wrapper {
     margin-bottom: 24px;
+    text-align: left;
 }
 
-.control-group label {
+.style-select-wrapper label {
     display: block;
-    font-weight: 600;
     margin-bottom: 8px;
-    color: var(--text-primary);
+    font-size: 13px;
+    color: var(--text-muted);
 }
 
 select {
     width: 100%;
-    padding: 12px 16px;
+    padding: 14px 16px;
+    background-color: var(--bg-color);
+    color: var(--text-main);
     border: 1px solid var(--border-color);
     border-radius: 8px;
-    font-size: 1rem;
-    background-color: white;
+    font-size: 15px;
     cursor: pointer;
-    appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2364748b'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 16px center;
-    background-size: 20px;
+    outline: none;
+    transition: border-color 0.3s ease;
 }
 
 select:focus {
-    outline: none;
-    border-color: var(--accent-color);
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    border-color: var(--primary-color);
 }
 
-/* Buttons */
-.btn-primary, .btn-secondary, .btn-outline {
+/* 버튼 스타일 */
+button {
     width: 100%;
-    padding: 14px;
+    padding: 15px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
     border-radius: 8px;
-    font-size: 1.1rem;
+    font-size: 16px;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.2s ease;
-    border: none;
+    transition: background-color 0.3s ease, transform 0.1s ease;
 }
 
-.btn-primary {
-    background: var(--accent-color);
-    color: white;
+button:hover:not(:disabled) {
+    background-color: var(--primary-hover);
 }
 
-.btn-primary:hover:not(:disabled) {
-    background: #2563eb;
-    transform: translateY(-1px);
+button:active:not(:disabled) {
+    transform: scale(0.98);
 }
 
-.btn-primary:disabled {
-    background: var(--border-color);
+button:disabled {
+    background-color: var(--border-color);
+    color: var(--text-muted);
     cursor: not-allowed;
-    color: var(--text-secondary);
 }
 
-.btn-secondary {
-    background: var(--success-color);
-    color: white;
+/* 결과 및 로딩 섹션 */
+.hidden {
+    display: none !important;
 }
 
-.btn-secondary:hover {
-    background: #059669;
-}
-
-.btn-outline {
-    background: transparent;
-    border: 1px solid var(--border-color);
-    color: var(--text-secondary);
-}
-
-.btn-outline:hover {
-    background: #f8fafc;
-    color: var(--text-primary);
-}
-
-.btn-group {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    margin-top: 24px;
-}
-
-/* Loading */
-.loader-container {
-    text-align: center;
+.loading-section {
     padding: 40px 0;
 }
 
+.result-section .result-image {
+    width: 100%;
+    border-radius: var(--border-radius);
+    margin-bottom: 24px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.button-group {
+    display: flex;
+    gap: 12px;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+}
+
+.btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* 스피너 애니메이션 */
 .spinner {
     width: 50px;
     height: 50px;
-    border: 4px solid rgba(59, 130, 246, 0.1);
-    border-left-color: var(--accent-color);
+    border: 5px solid var(--border-color); 
+    border-top: 5px solid var(--primary-color); 
     border-radius: 50%;
     animation: spin 1s linear infinite;
-    margin: 0 auto 20px;
+    margin: 0 auto 24px auto; 
 }
 
 @keyframes spin {
-    to { transform: rotate(360deg); }
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
-.sub-text {
-    font-size: 0.9rem;
-    color: var(--text-secondary);
-    margin-top: 8px;
+.loading-text {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text-main);
+    line-height: 1.6;
+    animation: pulse 1.5s ease-in-out infinite;
 }
 
-/* Result */
-.result-card h2 {
-    text-align: center;
-    margin-bottom: 20px;
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
 }
 
-.result-image-container {
-    width: 100%;
-    border-radius: 12px;
-    overflow: hidden;
-    background: #f8fafc;
-    border: 1px solid var(--border-color);
-}
+/* =========================================
+   📱 모바일 100% 반응형 최적화 (화면폭 600px 이하)
+   ========================================= */
+@media (max-width: 600px) {
+    body {
+        padding: 12px; /* 핸드폰에서는 바깥 여백 최소화 */
+    }
+    
+    .container {
+        padding: 24px 16px; /* 박스 안쪽 여백도 줄여서 화면을 넓게 씀 */
+        box-shadow: none; /* 모바일에서는 그림자를 빼서 플랫하고 넓어 보이게 */
+    }
 
-.result-image-container img {
-    width: 100%;
-    display: block;
-}
+    h1 {
+        font-size: 22px;
+    }
 
-footer {
-    text-align: center;
-    margin-top: 40px;
-    color: var(--text-secondary);
-    font-size: 0.9rem;
-}
+    .drop-zone {
+        min-height: 220px; /* 핸드폰 화면에 맞게 드래그 영역 높이 조절 */
+    }
 
-.hidden {
-    display: none;
-}
+    .preview-image {
+        max-height: 280px; /* 세로로 너무 길어지지 않게 방어 */
+    }
 
-@media (max-width: 640px) {
-    body { padding: 20px 15px; }
-    header h1 { font-size: 1.8rem; }
-    .btn-group { grid-template-columns: 1fr; }
+    button {
+        padding: 14px;
+    }
 }
